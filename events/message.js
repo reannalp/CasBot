@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const { prefix } = require('../config.json');
+const { prefix, blacklist } = require('../config.json');
 
 const cooldowns = new Discord.Collection();
 
@@ -10,7 +10,6 @@ module.exports = (client, message) => {
   //
 
   // blacklist
-  const blacklist = ['^nigg?(er|a)$', '^(fuck|lib|re)?tard(ed)?$', '^gyp(po|sy)?$', '^tranny$', '^fag(got)?$'];
   const blacklisted = blacklist.filter((word) => message.content.toLowerCase().match(word));
   if (!message.author.bot && blacklisted.length > 0) {
     const embed = new Discord.MessageEmbed()
@@ -21,7 +20,7 @@ module.exports = (client, message) => {
       .setTimestamp(message.createdAt);
 
     message.delete()
-      .then(message.author.send(`The following message on ProfoundBond was auto-deleted for containing a word on the server blacklist.\n>>> ${message.content}`))
+      .then(message.author.send(`The following message on ${message.guild.name} was auto-deleted for containing a word on the server blacklist.\n>>> ${message.content}`))
       .then((msg) => client.channels.cache.get('575799962202275844').send({ embed }))
       .catch(console.err);
   }

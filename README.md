@@ -1,2 +1,2 @@
-# FanBot
+# CasBot 2
 

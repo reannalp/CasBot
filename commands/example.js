@@ -3,6 +3,7 @@ const Discord = require('discord.js');
 module.exports = {
   name: 'example',
   description: '',
+  userPermissions: ['MANAGE_MESSAGES'],
   execute(client, message, args) {
     const embed = new Discord.MessageEmbed()
       .setColor('#9cff00')

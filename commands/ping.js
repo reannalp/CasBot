@@ -1,6 +1,7 @@
 module.exports = {
   name: 'ping',
   description: 'Ping!',
+  userPermissions: ['MANAGE_MESSAGES'],
   cooldown: 10,
   execute(client, message, args) {
     message.channel.send('...').then((msg) => {

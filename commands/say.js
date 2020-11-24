@@ -1,8 +1,8 @@
 module.exports = {
   name: 'say',
   description: 'Say!',
+  userPermissions: ['MANAGE_MESSAGES'],
   execute(client, message, args) {
-    // if (message.author.id !== client.config.ownerID) return;
     message.channel.send(args.join(' '));
     message.delete();
   },
